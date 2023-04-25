@@ -1,0 +1,37 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<form action="" method="POST">
+    <div>
+        <input name="time" type="text" placeholder="주차 시간을 입력하세요">
+        <input name="btn" value="btn" type="submit">
+    </div>
+</form>
+<div>
+    
+    {%with messages = get_flashed_messages()%}
+    {%if messages %}
+    <script type="text/javascript">
+    swal("알림창","{{messages[-1]}}", "error"); //alert("{{messages[-1]}}");
+    </script>
+    {%endif%}
+    {%endwith%}
+    
+    {% if error %}
+        <p><strong>Error:</strong> {{ error }}
+    {% endif %}
+    <div>주차 시간</br></div>
+    {% if time %}
+    ${{time}}
+    {% endif %}
+</div>
+<div>
+    {% if time %}
+    {{day}}
+    {% endif %}
+</div>                       
+<div>
+    <div>주차 요금은 {{fee}} 원 입니다.</div>
+    <div>주차금액 안내</br></div>
+    <div>   - 처음 2시간은 기본요금 3,000원. 이후 1시간당 2,000원의 주차료<br>
+            - 하루 주차 요금은 최대 15,000원</br>
+    </div>
+</div>
